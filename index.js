@@ -1,21 +1,19 @@
-const {MongoClient} = require('mongodb')
+/*const { MongoClient } = require("mongodb");
 
-const uri = 'mongodb://localhost:27017/'
+const url = "mongodb://127.0.0.1:27017";
+const client = new MongoClient(url);
 
-const dbname = "meuBanco"
+async function main() {
+  await client.connect();
+  const db = client.db("meuBanco");
+  const collection = db.collection("usuarios");
 
-async function conectar(){
-    const client = new MongoClient(uri)
+  await collection.insertOne({ nome: "Maria", idade: 22 });
 
-    try{
-        await client.connect(uri)
-        console.log("✅ Conectado ao MongoDB!")
+  const resultado = await collection.find().toArray();
+  console.log(resultado);
 
-        const db = client.db(dbname)
-        return db
-    } catch(erro){
-        console.error("Erro ao conectar:", erro)
-    }
+  await client.close();
 }
 
-conectar()
+main();*/
