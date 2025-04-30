@@ -13,6 +13,22 @@ async function Cadastro(){
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, username, contry})
       });
-    
+      
       alert("Cadastro enviado!");
+}
+async function Login(){
+  const user = document.getElementById('user').value
+  const pass = document.getElementById('pass').value
+
+  const res = await fetch('/', {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({user, pass})
+  });
+
+  if(res.ok){
+    alert('logado')
+  }else{
+    alert('falha no login')
+  }
 }

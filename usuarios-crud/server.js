@@ -30,11 +30,29 @@ app.get('/Cadastrar-se', (req, res)=>{
 
 app.post('/Cadastrar-se', async (req, res) =>{
     const {email, password, username, contry} = req.body;
-    const db = client.db('meuBanco')
+    const db = client.db('Meu-banco')
     const collection = db.collection('usuarios')
 
     collection.insertOne({email, password, username, contry})
 })
+
+app.post('/', async (req, res)=>{
+    const {user, pass} = req.body
+    const db = client.db('Meu-banco')
+    const collection = db.collection('usuarios')
+
+    const foundUser = await collection.findOne({
+        $or: [{username: user},{email: user}],
+        password: pass
+    })
+    
+    if(foundUser){
+        res.status(200).send("logado")
+    }else{
+        res.status(401).send('erro')
+    }
+})
+
 
 app.listen(3000, () =>{
     console.log('server aberto')
