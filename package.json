@@ -1,25 +1,28 @@
 {
   "name": "meubanco",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "startM": "nodemon usuarios-crud/server.js",
-    "X": "nodemon X/server.js"
+    "tailwind": "npx @tailwindcss/cli -i ./X/src/input.css -o ./X/public/output.css --watch",
+    "server": "nodemon X/server.js",
+    "dev": "concurrently \"npm run tailwind\" \"npm run server\"",
+    "start": "nodemon usuarios-crud/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^5.1.0",
-    "mongodb": "^6.16.0"
-  },
+  "description": "",
   "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "nodemon": "^3.1.10",
-    "postcss": "^8.5.3",
+    "concurrently": "^9.1.2",
+    "connect-livereload": "^0.6.1",
+    "express": "^5.1.0",
+    "livereload": "^0.9.3",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.5",
+    "ejs": "^3.1.10",
+    "mongodb": "^6.16.0",
     "tailwindcss": "^4.1.5"
   }
 }
